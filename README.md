@@ -1,2 +1,2 @@
-# bmiinsert
+# BMI Insert
 BMIRussian inserts system
