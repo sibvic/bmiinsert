@@ -10,8 +10,18 @@ thickness         = 2;    // Thickness of base, mm
 screw_head_height = 3;    // Height of the screw head, mm
 leg_size          = 5;    // Leg size, mm
 
-function calcX(x_index) = (x_index == width_count ? x_index * item_unit - tolerance - leg_size : max(0, x_index * item_unit - tolerance));
-function calcY(y_index) = (y_index == height_count ? y_index * item_unit - tolerance - leg_size : max(0, y_index * item_unit - tolerance));
+module plotLegs(x, y) {
+    function calcX(x_index) = (x_index == x ? x_index * item_unit - tolerance - leg_size : max(0, x_index * item_unit - tolerance));
+    function calcY(y_index) = (y_index == y ? y_index * item_unit - tolerance - leg_size : max(0, y_index * item_unit - tolerance));
+
+    for (x_index = [0 : x]) {
+        for (y_index = [0 : y]) {
+            translate([calcX(x_index), calcY(y_index), thickness]) {
+                cube(size = [leg_size, leg_size, screw_head_height]);
+            }
+        }
+    }
+}
 
 union() {
     difference() {
@@ -25,11 +35,5 @@ union() {
         }
     }
 
-    for (x_index = [0 : width_count]) {
-        for (y_index = [0 : height_count]) {
-            translate([calcX(x_index), calcY(y_index), thickness]) {
-                cube(size = [leg_size, leg_size, screw_head_height]);
-            }
-        }
-    }
+    plotLegs(width_count, height_count);
 }
