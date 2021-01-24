@@ -29,7 +29,7 @@ module plotBase(x, y, tolerance, thickness, screw_width) {
         for (x_index = [0 : x - 1]) {
             for (y_index = [0 : y - 1]) {
                 translate([x_index * item_unit + item_unit / 2 - tolerance, y_index * item_unit + item_unit / 2 - tolerance, 0]) {
-                    cylinder(r = screw_width / 2, h = thickness);
+                    cylinder(r = screw_width / 2 + tolerance * 2, h = thickness);
                 }
             }
         }
