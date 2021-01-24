@@ -24,7 +24,7 @@ module plotBase(x, y, tolerance, thickness, screw_width) {
 }
 
 module plotM4NutSpace(x, y, nut_height) {
-    width = 8;
+    width = 7.8;
     translate([x, y, nut_height / 2]) {
         cylinder(r = width / 2 + tolerance * 2, h = nut_height, $fn = 6, center = true);
     }
