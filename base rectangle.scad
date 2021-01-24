@@ -8,7 +8,6 @@ tolerance         = 0.25; // 3D printing tolerance per side, mm
 thickness         = 2;    // Thickness of base, mm
 
 nut_height        = 3;    // Height of the nut, mm
-leg_size          = 5;    // Leg size, mm
 
 module plotBase(x, y, tolerance, thickness, screw_width) {
     difference() {
