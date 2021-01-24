@@ -23,17 +23,20 @@ module plotLegs(x, y) {
     }
 }
 
-union() {
+module plotBase(x, y) {
     difference() {
-        cube(size = [item_unit * width_count - tolerance, item_unit * height_count - tolerance, thickness]);
-        for (x_index = [0 : width_count - 1]) {
-            for (y_index = [0 : height_count - 1]) {
+        cube(size = [item_unit * x - tolerance, item_unit * y - tolerance, thickness]);
+        for (x_index = [0 : x - 1]) {
+            for (y_index = [0 : y - 1]) {
                 translate([x_index * item_unit + item_unit / 2 - tolerance, y_index * item_unit + item_unit / 2 - tolerance, 0]) {
                     cylinder(r = screw_width / 2, h = thickness);
                 }
             }
         }
     }
+}
 
+union() {
+    plotBase(width_count, height_count);
     plotLegs(width_count, height_count);
 }
