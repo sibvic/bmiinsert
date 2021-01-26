@@ -43,9 +43,9 @@ difference() {
     }
 
     translate([mount_width / 2, main_height + mount_height / 2, base_thickness / 2]) {
-        cylinder(r = screw_width / 2, h = base_thickness, center = true);
+        cylinder(r = screw_width / 2 + tolerance * 2, h = base_thickness, center = true);
     }
     translate([total_width - mount_width / 2, main_height + mount_height / 2, base_thickness / 2]) {
-        cylinder(r = screw_width / 2, h = base_thickness, center = true);
+        cylinder(r = screw_width / 2 + tolerance * 2, h = base_thickness, center = true);
     }
 }
