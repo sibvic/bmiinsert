@@ -16,7 +16,9 @@ difference() {
     mount_height = screw_width * 4;
     union() {
         // base
-        cube(size = [total_width, main_height, base_thickness], center = false);
+        translate([tolerance, 0, 0]) {
+            cube(size = [total_width - tolerance * 2, main_height, base_thickness], center = false);
+        }
         
         // holder body
         translate([total_width / 2, main_height / 2, socket_dia / 2 + base_thickness]) {
